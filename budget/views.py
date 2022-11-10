@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import DetailView, CreateView, View
+from .models import Budget, Category, Expense, Income
 
-# Create your views here.
-def project_list(request):
-    return render(request, 'budget/project-list.html')
+class BudgetView(View):
+    pass     
 
-def project_detail(request, project_slug):
-    #  Fetch the correct project
-    return render(request, 'budget/project-detail.html')
+class CategoryCreateView(CreateView):
+    model = Category
+    template_name = ".html"

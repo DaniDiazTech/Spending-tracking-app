@@ -1,7 +1,10 @@
-from http.client import ImproperConnectionState
 from django.db import models
 from django.utils.text import slugify
 from utils.base_models import BaseModel
+from django.contrib.auth import get_user_model
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+User = get_user_model()
 
 class Category(BaseModel):
     name = models.CharField(max_length=60)
@@ -21,11 +24,20 @@ class Category(BaseModel):
 
 
 class Budget(BaseModel):
-    account  = models.OneToOneField('accounts.Account', on_delete=models.CASCADE)
+    user  = models.OneToOneField(User, on_delete=models.CASCADE)
     amount  = models.DecimalField(max_digits=16, decimal_places=2, default=0)
 
     def __str__(self):
-        return str(self.account) + " - Budget"
+        return str(self.user) + " - Budget"
+
+
+@receiver(post_save, sender=User)
+def create_budget(sender, instance=None, created=False, **kwargs):
+    """
+    Create budget whenever a user is created.
+    """
+    if created:
+        Budget.objects.create(user = instance)
 
 
 class Expense(BaseModel):

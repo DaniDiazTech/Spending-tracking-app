@@ -42,8 +42,8 @@ def create_budget(sender, instance=None, created=False, **kwargs):
 
 class Expense(BaseModel):
     name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
-
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name="expenses")
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)
@@ -54,8 +54,8 @@ class Expense(BaseModel):
 
 class Income(BaseModel):
     name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
-
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name="income")
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)

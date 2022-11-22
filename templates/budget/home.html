@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+{% now "F" as month %}  
+
+<h1>Home</h1>
+<p>Hola {{user.username}} este es el presupuesto de este mes</p>
+<p>Estamos en {{ month | capfirst }}</p>
+
+{{categories}}
+
+{{budget}}
+
+{{expenses}}
+{{incomes}}
+<p>
+{{sum_expenses}}
+{{sum_incomes}}
+{{budget_amount}}
+</p>
+
+<ul>
+    {% for expense in expenses %}
+        {{expense}}
+    {% endfor %}
+</ul>
+
+<h2>Crear Ingreso</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{income_form.as_p}}
+    <button name="income" type="submit">Guardar</button>
+</form>
+
+<h2>Crear gasto</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{income_form.as_p}}
+    <button name="expense" type="submit">Guardar</button>
+</form>
+{% endblock body %}

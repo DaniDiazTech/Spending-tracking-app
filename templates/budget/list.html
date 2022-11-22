@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Ver todo{% endblock title %}
+
+{% block body %}
+<h1>Ver todo</h1>
+
+<h2>Todos los gastos</h2>
+<ul>
+    {% for expense in expenses %}
+        <p>{{expense}}, <a href="{% url 'budget:expense_update' expense.pk %}">Editar</a>, <a href="{% url 'budget:expense_delete' expense.pk %}">Borrar</a></p>
+    {% empty %}
+        <p>Oye no tienes ningun gasto, <a href="{% url 'budget:home' %}">crea uno!</a> </p>
+    {% endfor %}
+</ul>
+
+
+<h2>Todos los ingresos</h2>
+<ul>
+    {% for income in incomes %}
+        <p>{{income}}, <a href="{% url 'budget:income_update' income.pk %}">Editar</a>, <a href="{% url 'budget:income_delete' income.pk %}">Borrar</a></p>
+    {% empty %}
+        <p>Oye no tienes ningun ingreso, <a href="{% url 'budget:home' %}">crea uno!</a> </p>
+    {% endfor %}
+</ul>
+{% endblock body %}

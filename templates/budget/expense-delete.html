@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar gasto {{expense.name}} {% endblock title %}
+
+{% block body %}
+<h1>Eliminar gasto {{expense.name}}</h1>
+<p>Estas seguro de eliminar el gasto {{expense.name}}? Esta opción no se puede reversar</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Eliminar</button>
+</form>
+{% endblock body %}

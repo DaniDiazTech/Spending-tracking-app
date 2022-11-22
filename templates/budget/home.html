@@ -5,6 +5,7 @@
 {% block body %}
 {% now "F" as month %}  
 
+<a href="{% url 'accounts:logout' %}">Salir</a>
 <h1>Home</h1>
 <p>Hola {{user.username}} este es el presupuesto de este mes</p>
 <p>Estamos en {{ month | capfirst }}</p>
@@ -21,9 +22,23 @@
 {{budget_amount}}
 </p>
 
+
+<h2>Gastos</h2>
 <ul>
     {% for expense in expenses %}
-        {{expense}}
+        <p>{{expense}}, <a href="{% url 'budget:expense_update' expense.pk %}">Editar</a>, <a href="{% url 'budget:expense_delete' expense.pk %}">Borrar</a></p>
+    {% empty %}
+        <p>Oye no tienes ningun gasto este mes, crea uno!</p>
+    {% endfor %}
+</ul>
+
+<h2>Ingresos</h2>
+
+<ul>
+    {% for income in incomes %}
+        <p>{{income}}, <a href="{% url 'budget:income_update' income.pk %}">Editar</a>, <a href="{% url 'budget:income_delete' income.pk %}">Borrar</a></p>
+    {% empty %}
+        <p>Oye no tienes ningun ingreso este mes, crea uno!</p>
     {% endfor %}
 </ul>
 
@@ -40,4 +55,10 @@
     {{income_form.as_p}}
     <button name="expense" type="submit">Guardar</button>
 </form>
+
+<a href="{% url 'budget:list' %}">Ver todo</a>
+
+<a href="{% url 'budget:category_new' %}">Crear categoria</a>
+
+
 {% endblock body %}

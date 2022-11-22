@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Crear categoria{% endblock title %}
+
+{% block body %}
+<h1>Crear categoria</h1>
+
+<form action="#" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Crear</button>
+</form>
+{% endblock body %}

@@ -1,6 +1,7 @@
 from datetime import datetime
+from django.urls import reverse_lazy
 
-from django.views.generic import DetailView, CreateView, View, TemplateView, ListView
+from django.views.generic import DetailView, CreateView, View, TemplateView, ListView, DeleteView, UpdateView
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -9,9 +10,10 @@ from django.shortcuts import render, redirect
 
 from django.db.models import Sum
 
-from .models import Budget, Category, Expense, Income
+from .models import Budget, Category, Expense, Income, User
 
 from .forms import IncomeForm, ExpenseForm
+
 
 class HomeView(LoginRequiredMixin, View):
     template_name = "budget/home.html"
@@ -62,6 +64,7 @@ class HomeView(LoginRequiredMixin, View):
         return redirect('budget:home')
             
 class CompleteListview(LoginRequiredMixin, View):
+    template_name = "budget/list.html"
     
     # Get all expenses and incomes of the user
     def get(self, *args, **kwargs): 
@@ -76,13 +79,37 @@ class CompleteListview(LoginRequiredMixin, View):
 class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     template_name = "budget/category-create.html"
+    success_url = reverse_lazy('budget:home')
+    fields = ['name']
 
-
-class IncomeCreateView(LoginRequiredMixin, CreateView):
+class IncomeUpdateView(LoginRequiredMixin, UpdateView):
     model = Income
-    template_name = "bugdet/income-create.html"
+    template_name = "budget/income-update.html"
+    fields = ['name', 'description', 'amount', 'category']
+    success_url = reverse_lazy('budget:home')
+    def form_valid(self, form):
+        t = form.save(commit=False)
+        t.budget = Budget.objects.get(user=self.request.user)
+        t.save()
+        return super().form_valid(form)
 
-class ExpenseCreateView(LoginRequiredMixin, CreateView):
+class ExpenseUpdateView(LoginRequiredMixin, UpdateView):
     model = Expense
-    template_name = "bugdet/expense-create.html"
+    template_name = "budget/expense-update.html"
+    fields = ['name', 'description', 'amount', 'category']
+    success_url = reverse_lazy('budget:home')
+    def form_valid(self, form):
+        t = form.save(commit=False)
+        t.budget = Budget.objects.get(user=self.request.user)
+        t.save()
+        return super().form_valid(form)
 
+class IncomeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Income
+    template_name = "budget/income-delete.html"
+    success_url = reverse_lazy('budget:home')
+
+class ExpenseDeleteView(LoginRequiredMixin, DeleteView):
+    model = Expense
+    template_name = "budget/expense-delete.html"
+    success_url = reverse_lazy('budget:home')

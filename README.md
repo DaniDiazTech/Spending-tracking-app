@@ -1,6 +1,16 @@
 # Spending-tracking-app
 Final project for the introduction to systems engineering class.
 
+Dashboard:
+[Dashboard](screenshots/usave-dashboard.png)
+
+List of expenses and income:
+[List](screenshots/usave-list.png)
+
+
+Sign in:
+[Sign in](screenshots/usave.png)
+
 To run the project on local do:
 
 ```bash

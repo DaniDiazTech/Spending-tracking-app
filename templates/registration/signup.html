@@ -3,13 +3,141 @@
 {% block title %}Crear cuenta{% endblock title %}
 
 {% block navbar %}{% endblock navbar %}
+{% block footer %}{% endblock footer %}
+
+{% block styles %}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(22, 21, 21);
+
+    ;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0);
+}
+
+form .title {
+    color: #252525;
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+form label {
+    margin-bottom: 35px;
+}
+
+form label .fa-solid {
+    font-size: 20px;
+    color: #146b32;
+    margin-right: 10px;
+}
+
+form label input {
+    outline: none;
+    border: none;
+    color: #252525;
+    border-bottom: solid 1px #146b32;
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+form label input::placeholder {
+    color: rgba(37, 37, 37, 0.5);
+}
+
+
+form .link {
+    color: #252525;
+    margin-bottom: 15px;
+}
+
+form button {
+    color: #fff;
+    border: none;
+    background: linear-gradient(to right, #146b32, #429b64);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.logoUnal{
+    width: 10rem;
+    margin-left: 5rem;
+    margin-right: 0;
+}
+.usave{
+    width: 495px;
+    height: 102px;
+    font-family: Inter;
+    font-size: 128px;
+    font-weight:bolder;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing:-4px;
+    text-align: left;
+    color: whitesmoke;
+    z-index: 0;
+    margin-bottom: 50px;
+    padding-left: 20px; 
+}
+
+{% endblock styles %}
 
 {% block body %}
-<h1>Crear Cuenta</h1>
+<form action="" method="post">
+        {% csrf_token %}
+        <h1 class="title">Registro</h1>
+        <label>
+            <i class="fa-solid fa-user"></i>
+            <input name="username" placeholder="Username" type="text" id="username" autofocus>
+        </label>
+        <label>
+            <i class="fa-solid fa-user"></i>
+            <input name="email" placeholder="Email" type="text" id="email">
+        </label>
+        <label>
+            <i class="fa-solid fa-user"></i>
+            <input name="first_name" placeholder="Nombre" type="type" id="nombre">
+        </label>
+        <label>
+            <i class="fa-solid fa-user"></i>
+            <input name="last_name" placeholder="Apellido" type="text" id="apellido">
+        </label>
+        <label>
+            <i class="fa-solid fa-lock"></i>
+            <input name="password1" placeholder="Contraseña" type="password" id="password">
+        </label>
+        <label>
+            <i class="fa-solid fa-lock"></i>
+            <input name="password2" placeholder="Confirmar contraseña" type="password" id="Confirmarpassword">
+        </label>
+        <button id="button">Aceptar</button>
+    </form>
+    <img class="logoUnal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Escudo_de_la_Universidad_Nacional_de_Colombia_%282016%29.svg/598px-Escudo_de_la_Universidad_Nacional_de_Colombia_%282016%29.svg.png" alt="Unals">
+    
+    <div class="bg-1">
+        <span class="usave t-stroke t-shadow ">Usave</span>
+    </div>
 
-<form action="#" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Enviar</button>
-</form>
+    <footer>
+        <span></span>
+    </footer>
 {% endblock body %}

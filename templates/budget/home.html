@@ -3,513 +3,6 @@
 {% block title %}Home{% endblock title %}
 
 
-{% block styles %}
-* { 
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html /*Esto pasa el valor predeterminado de 16 px a 10 px para que 1rem valga 10px */ {
-    font-size: 62.5%;
-}   
-
-body{
-    position: relative;
-    width: 100vw;
-    max-width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    background: #FFFFFF;    
-  
-    }
-
-header {
-    height: 10.93vh;
-
-    width: 100vw;
-    align-self: stretch;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 74.7vw;
-    padding: 2.92vh 35.56vw 2.92vh 2.77vw;
-    background-color: #1e1e20;
-      }
-
-      .parte-derecha-header {
-        width: 29.72vw;
-        height: 6.64vh;
-        flex-grow: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 0;
-      }
-      .usuario {
-        width: 4.66vw;
-        height: 3.64vh;
-        flex-grow: 0;
-        margin-right: 1.2vw;
-        font-family: Inter;
-        font-size: 3vh;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        text-align: center;
-        color: #fff;
-      }
-      .iconoUser{
-        width: 2.63vw;
-        height: 4.5vh;
-        margin-right: 1vw;
-        flex-grow: 0;
-        font-size: 2.5rem; 
-        color: #FFFFFF;
-      }
-      .iconoSingOut {
-        order: 1;
-        width: 74px;
-        height: 31px;
-        flex-grow: 0;
-        font-size: 2.5rem;
-
-        text-align: center;
-        color: #fff;
-      }
-      .logoUnal{
-        position: relative;
-        left:1rem;
-        flex-grow: 0;
-    }
-        img{
-        height: 9vh;
-        max-width: auto;
-    }
-
-
-main {
-  position: relative;
-    max-width: 100vw;
-    width: 100vw;
-    height: 100vh;
-    max-height: 83.39vh;
-    flex-grow: 0;
-    padding: 0;
-}
-
-.contenedorWidjets{
-    width: 70vw;
-    height: 26.95vh;
-    left: 10vw;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3.02vh 5.06vw;
-  }
-
-  .widjetdeIngresos {
-    width: 28.01vw;
-    height: 20.89vh;
-    flex-grow: 0;
-    left:100vw;
-    margin: 0 2.84vw 0 0;
-    padding: 4.68vh 3.67vw;
-    box-shadow: 0 3px 3.80vh 0 rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-
-  }
-
-  .widjetdeGastos{
-    width: 28.01vw;
-    height: 20.89vh;
-    flex-grow: 0;
-    margin: 0 2.84vw;
-    padding: 5.07vh 3.67vw 4.68vh 3.12vw;
-    box-shadow: 0 3px 3.80vh 0 rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-  }
-
-  .widgetdeBudget{
-    width: 28.01vw;
-    height: 20.89vh;
-    flex-grow: 0;
-    margin: 0 0 0 2.84vw;
-    padding: 5.07vh 3.7vw 4.68vh;
-    box-shadow: 0 3px 3.80vh 0 rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-  }
-
-
-
-
-footer{
-    width:100vw;
-}
-
-.colores{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:flex-end;
-    padding: 0px;
-    width: 100vw;
-    max-width: 100vw;
-    /*no agregar high o crea*/
-}   
-
-.color1{
-    order: 0;
-    flex-grow: 1;
-    width: 288.4px;
-height: 5.6vh;
-
-background: #FD4674;
-}
-.color2{
-
-order: 1;
-flex-grow: 1;
-width: 288.4px;
-height: 5.6vh;
-background: #FDAF81;
-}
-
-.color3{
-    width: 288.4px;
-height: 5.6vh;
-
-background: #3BBBFA;
-
-order: 2;
-flex-grow: 1;
-}
-.color4{
-    width: 288.4px;
-height: 5.6vh;
-
-background: #6D51E4;
-
-order: 3;
-flex-grow: 1;
-}
-
-.color5{
-    width: 288.4px;
-height: 5.6vh;
-
-background: #B740CE;
-
-order: 4;
-flex-grow: 1;
-}
-
-.letras{
-  width: 20.04vw;
-  height: 5.17vh;
-  flex-grow: 0;
-  font-family: Inter;
-  font-size: 2.32vw;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.04;
-  letter-spacing: normal;
-  text-align: center;
-  color: #72b162;
-}
-
-
-.gastos,.cantidadGastos{
-  color: #f06363;
-}
-
-
-.budget, .cantidadBudget{
-  color: #000;
-  text-align: center;
-}
-
-.botones-arriba {
-  position: absolute;
-  width: 100vw;
-  height: 10.30vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 0 0 0;
-  padding: 0 0 0 5.93vw;
-}
-
-.botones{
-  width: 44.10vw;
-  flex-grow: 0;
-   display: flex;
-  align-items: flex-end;
-
-}
-
-a{
-  text-decoration: none;
-}
-
-.botonAgregarIngreso{
-  
-box-sizing: border-box;
-
-position: relative;
-width: 19.83vw;
-height: 4.39vh;
-left: 0px;
-
-background: #72B162;
-backdrop-filter: blur(2px);
-}
-
-.botonAgregarGasto{
-  
-  box-sizing: border-box;
-  
-  position: relative;
-  width: 19.83vw;
-  height: 4.39vh;
-  left: 0.1vw;
-  
-  background: #FD4674;
-  backdrop-filter: blur(2px);
-  }
-.textoBotonesMedio{
-  font-family: 'Inter';
-font-style: normal;
-font-weight: 550;
-font-size: 2.32vh;
-display: flex;
-align-items: center;
-
-color: #FFFFFF;
-
-}
-
-.textoBotonesMedio{
-  position: absolute;
-  width: 11.16vw;
-  height: 4vh;
-  left: 5.09vw;
-
-}
-.botonAgregarCategoriaIn{
-  box-sizing: border-box;
-
-width: 19.83vw;
-height: 4.39vh;
-left: 286px;
-top: 40px;
-
-background: #000000;
-backdrop-filter: blur(2px);
-}
-.botonAgregarCategoriaGas{
-  box-sizing: border-box;
-
-width: 19.83vw;
-height: 4.39vh;
-left: 286px;
-top: 40px;
-
-background: #000000;
-backdrop-filter: blur(2px);
-}
-
-.listas {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0;
-  position: relative;
-left: 0.2vw;
-top: 10.16vh;
-}
-
-.lista-de-ingresos{
-  width: 44.24vw;
-
-  order: 0;
-  flex-grow: 0;
-
-}
-
-.ingresoLista{
-  position: absolute;
-  width: 2.24vw;
-  height: 9.7vh;
-}
-.cuadradoLista {
-  flex-grow: 0;
-  padding: 2vh 37px 0 60px;
-}
-
-.cuadradoIngreso{
-  border: solid 2px #72b162;
-  background-color: #dff0c8;
-}
-.cuadradoGasto{
-  background: rgba(240, 99, 99, 0.47);
-border: 2px solid rgba(240, 99, 99, 0.59);
-}
-.textoIngreso, .textoCategoriaIngreso{
-  width: 20.80vw;
-  height: 5.77vh;
-  flex-grow: 0;
-  font-family: Inter;
-  font-size: 2.9vh;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-
-}
-.textoIngreso{
-  font-weight: 100;
-}
-
-.textoCantidadIngresoLista{
-  width: 20.80vw;
-  height: 5.77vh;
-  flex-grow: 0;
-  padding-right: 6vw;
-  font-family: Inter;
-  font-size: 2.9vh;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000;
-}
-
-.iconoEditar, .iconoEliminar{
-  width: 2.5vw;
-  height: 5.07vh;
-  flex-grow: 0;
-  font-size: 1.3vw;
-  color: #000;
-}
-.botonVerTodo{
-  position: absolute;
-  width: 6.28vw;
-  height: 3.51vh;
-  top: 35vh;
-  right: 88.1vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background-color: #000;
-}
-
-.verTodo{
-
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 200;
-font-size: 1.5vh;
-display: flex;
-align-items: center;
-
-color: #FFFFFF;
-
-}
-
-.botonAgregarIngreso:hover{
-  background: #304b2a;
-}
-
-.botonAgregarGasto:hover{
-  background: #961835;
-}
-
-
-.popup{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top:0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-}
-
-.popup2{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top:0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-}
-
-.popupContent{
-  border:#304b2a 7px solid;
-  height: 250px;
-  width: 600px;
-  background: #d9ffcf;
-  padding: 20px;
-  border-radius: 10px;
-
-
-}
-.popup2{
-  border:rgb(221, 78, 90) 7px solid;
-  height: 250px;
-  width: 600px;
-  background: rgb(236, 164, 171);
-  padding: 20px;
-  border-radius: 10px;
-
-
-}
-
-.boton{
-  background: #000;
-  padding: 5px 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: white;
-  font-weight: bolder;
-  margin-top: 25px;
-
-}
-input{
-  margin:20px auto;
-  display: block;
-  padding: 8px;
-  border-radius: 4px;
-  border-style:double;
-}
-
-.close{
-cursor: pointer;
-}
-{% endblock styles %}
-
 {% block body %}
 {% now "F" as month %}  
 <main>
@@ -547,56 +40,51 @@ cursor: pointer;
     </div>
     <div class="listas">
         <div class="lista-de-ingresos">
+            {% for income in incomes %}
             <div class="IngresoLista">
-                {% for income in incomes %}
-                <div class="IngresoLista">
-                    <div class="cuadradoLista cuadradoIngreso">
-                        <span class="textoIngreso">{{income}}</span>
-                        {% if income.category %}
-                        <span class="textoCategoriaIngreso">{{income.category}}</span>
-                        {% else %}
-                        <span class="textoCategoriaIngreso">---</span>
-                        {% endif %}
-                        <span class="textoCantidadIngresoLista">${{income.amount}}</span>
-                        <a href="{% url 'budget:income_update' income.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
-                        <a href="{% url 'budget:income_delete' income.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
-                    </div>
+                <div class="cuadradoLista cuadradoIngreso">
+                    <span class="textoIngreso">{{income}}</span>
+                    {% if income.category %}
+                    <span class="textoCategoriaIngreso">{{income.category}}</span>
+                    {% else %}
+                    <span class="textoCategoriaIngreso">---</span>
+                    {% endif %}
+                    <span class="textoCantidadIngresoLista">${{income.amount}}</span>
+                    <a href="{% url 'budget:income_update' income.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
+                    <a href="{% url 'budget:income_delete' income.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
                 </div>
-                {% empty %}
-                <div class="IngresoLista">
-                    <div class="cuadradoLista cuadradoIngreso">
-                        <span class="textoIngreso">Oye no tienes ningun ingreso este mes, crea uno!</span>
-                    </div>
-                </div>
-                {% endfor %}
             </div>
+            {% empty %}
+            <div class="IngresoLista">
+                <div class="cuadradoLista cuadradoIngreso">
+                    <span class="textoIngreso">Oye no tienes ningun ingreso este mes, crea uno!</span>
+                </div>
+            </div>
+            {% endfor %}
         </div>
         <div class="lista-de-ingresos">
-            <div class="lista-de-ingresos">
-                <div class="IngresoLista">
-                {% for expense in expenses %}
-                <div class="IngresoLista">
-                    <div class="cuadradoLista cuadradoGasto">
-                        <span class="textoIngreso">{{expense}}</span>
-                        {% if expense.category %}
-                        <span class="textoCategoriaIngreso">{{expense.category}}</span>
-                        {% else %}
-                        <span class="textoCategoriaIngreso">---</span>
-                        {% endif %}
-                        <span class="textoCantidadIngresoLista">${{expense.amount}}</span>
-                        <a href="{% url 'budget:expense_update' expense.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
-                        <a href="{% url 'budget:expense_delete' expense.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
-                    </div>
+            {% for expense in expenses %}
+            <div class="IngresoLista">
+                <div class="cuadradoLista cuadradoGasto">
+                    <span class="textoIngreso">{{expense}}</span>
+                    {% if expense.category %}
+                    <span class="textoCategoriaIngreso">{{expense.category}}</span>
+                    {% else %}
+                    <span class="textoCategoriaIngreso">---</span>
+                    {% endif %}
+                    <span class="textoCantidadIngresoLista">${{expense.amount}}</span>
+                    <a href="{% url 'budget:expense_update' expense.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
+                    <a href="{% url 'budget:expense_delete' expense.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
                 </div>
-                {% empty %}
-                <div class="IngresoLista">
-                    <div class="cuadradoLista cuadradoGasto">
-                        <span class="textoIngreso">Oye no tienes ningun gasto este mes, crea uno!</span>
-                    </div>
+            </div>
+            {% empty %}
+            <div class="IngresoLista">
+                <div class="cuadradoLista cuadradoGasto">
+                    <span class="textoIngreso">Oye no tienes ningun gasto este mes, crea uno!</span>
                 </div>
+            </div>
 
-                {% endfor %}
-            </div>        
+            {% endfor %}
         </div>
     <a href="{% url 'budget:list' %}" class="botonVerTodo">
         <span class="verTodo">Ver todo</span>
@@ -640,7 +128,6 @@ cursor: pointer;
 </main>
 
 
-<script src="https://kit.fontawesome.com/6bd24138c4.js" crossorigin="anonymous"></script>
 <script>
 document.getElementById("botonAgregarIngreso").addEventListener("click",function(){
         document.querySelector(".popup").style.display = "flex";
@@ -655,8 +142,5 @@ document.getElementById("botonAgregarGasto").addEventListener("click",function()
 document.querySelector(".close2").addEventListener("click",function(){
     document.querySelector(".popup2").style.display = "none";
 })
-
-
-
 </script>
 {% endblock body %}

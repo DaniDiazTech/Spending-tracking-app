@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ("first_name", "last_name",
-                  "username", "password1", "password2")
+                  "username", 'email', "password1", "password2")
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)

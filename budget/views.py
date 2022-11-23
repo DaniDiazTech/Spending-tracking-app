@@ -90,6 +90,12 @@ class IncomeUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "budget/income-update.html"
     fields = ['name', 'description', 'amount', 'category']
     success_url = reverse_lazy('budget:home')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(IncomeUpdateView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
     def form_valid(self, form):
         t = form.save(commit=False)
         t.budget = Budget.objects.get(user=self.request.user)
@@ -101,6 +107,12 @@ class ExpenseUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "budget/expense-update.html"
     fields = ['name', 'description', 'amount', 'category']
     success_url = reverse_lazy('budget:home')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ExpenseUpdateView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
     def form_valid(self, form):
         t = form.save(commit=False)
         t.budget = Budget.objects.get(user=self.request.user)

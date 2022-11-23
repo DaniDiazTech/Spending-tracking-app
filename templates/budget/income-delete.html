@@ -1,13 +1,73 @@
 {% extends 'base.html' %}
 
 {% block title %}Eliminar ingreso {{income.name}} {% endblock title %}
+{% block footer %}{% endblock footer %}
+
+
+{% block navbar %}
+<header class="header">
+        <div class="logo">
+            <img src="https://images.credly.com/images/d57ca793-0499-419a-a5a8-8a56699c6c6c/blob.png" alt="Imagen universidad Nacional"> 
+        </div>
+        <nav>
+            <ul class="linksNav">
+                <li><a href='#' class="fa-regular fa-user iconoUser"></a></li>
+                <li><span class="usuario">{{user.username}}</span></li>
+                <li><a href='{% url 'accounts:logout' %}' class="fa-solid fa-right-from-bracket iconoSingOut"></a></li>
+            </ul>
+        </nav>
+    </header>
+{% endblock navbar %}
+
+
+{% block styles %}
+header{
+    background-color: #1e1e20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7rem;
+    padding: 5px 10px;
+}
+nav{
+    padding-right: 3rem;
+}
+.header .logo img{
+    height: 4rem;
+    width: auto;
+}
+
+.header .linksNav {
+    list-style: none;
+
+}
+
+.header .linksNav li{
+    display: inline-block;
+    padding: 0px 10px;
+    color: white;
+
+    
+}
+.header .linksNav a{
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+.usuario{
+    font-size: 2rem;
+}
+{% endblock styles %}
 
 {% block body %}
-<h1>Eliminar ingreso {{income.name}}</h1>
-<p>Estas seguro de eliminar el ingreso {{income.name}}? Esta opción no se puede reversar</p>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Eliminar</button>
-</form>
+<div class="container">
+    <div class="text-center center">
+        <h1>Eliminar ingreso {{income.name}}</h1>
+        <p>Estas seguro de eliminar el ingreso {{income.name}}? Esta opción no se puede reversar</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+        </form>
+    </div>
+</div>
 {% endblock body %}

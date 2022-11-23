@@ -2,11 +2,97 @@
 
 {% block title %}Editar {{income.name}}{% endblock title %}
 
+{% block footer %}{% endblock footer %}
+
+{% block navbar %}
+<header class="header">
+        <div class="logo">
+            <img src="https://images.credly.com/images/d57ca793-0499-419a-a5a8-8a56699c6c6c/blob.png" alt="Imagen universidad Nacional"> 
+        </div>
+        <nav>
+            <ul class="linksNav">
+                <li><a href='#' class="fa-regular fa-user iconoUser"></a></li>
+                <li><span class="usuario">{{user.username}}</span></li>
+                <li><a href='{% url 'accounts:logout' %}' class="fa-solid fa-right-from-bracket iconoSingOut"></a></li>
+            </ul>
+        </nav>
+    </header>
+{% endblock navbar %}
+
+{% block styles %}
+header{
+    background-color: #1e1e20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7rem;
+    padding: 5px 10px;
+}
+nav{
+    padding-right: 3rem;
+}
+.header .logo img{
+    height: 4rem;
+    width: auto;
+}
+
+.header .linksNav {
+    list-style: none;
+
+}
+
+.header .linksNav li{
+    display: inline-block;
+    padding: 0px 10px;
+    color: white;
+
+    
+}
+.header .linksNav a{
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+.usuario{
+    font-size: 2rem;
+}
+{% endblock styles %}
+
 {% block body %}
-<h1>Editar ingreso: {{income.name}}</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Editar</button>
-</form>
+<div class="container">
+    <div class="text-center center">
+        <h1>Editar ingreso: {{income.name}}</h1>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        
+        <div class="my-2">
+            <label for="name" class="form-label">Nombre</label>
+            <input name="name" type="text" class="form-control" id="name" value="{{income.name}}">
+        </div> 
+        <div class="my-2">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea name="description" id="description" class="form-control" rows="3">{{income.description}}</textarea>
+        </div> 
+        <div class="my-2">
+            <label for="amount" class="form-label">Cantidad</label>
+            <input type="number" name="amount" id="amount" class="form-control" step="0.01" value="{{income.amount | floatformat:"0"}}"></input>
+        </div> 
+        <div class="my-2">
+            <label for="category" class="form-label">Categoria</label>
+            <select name="category" class="form-select" aria-label="categoria" id='category'>
+                <option >---</option>
+                {% for category in categories %}
+                {% if category == income.category %}
+                <option value="{{category.pk}}" selected>{{category.name}}</option>
+                {% else %}
+                <option value="{{category.pk}}">{{category.name}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div> 
+
+        <button class="btn btn-danger" type="submit">Editar</button>
+    </form>
+</div>
 {% endblock body %}

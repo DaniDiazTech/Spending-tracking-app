@@ -2,25 +2,69 @@
 
 {% block title %}Ver todo{% endblock title %}
 
+{% block styles %}
+body,header{width:100vw}body,main{height:100vh;position:relative}.colores,.listas,header{display:flex}.listas,.logoUnal,body,main{position:relative}.boton,a{text-decoration:none}*{box-sizing:border-box;margin:0;padding:0}html{font-size:62.5%}body{max-width:100vw;max-height:100vh;background:#fff}header{height:10.93vh;align-self:stretch;flex-grow:0;flex-direction:row;justify-content:flex-start;align-items:center;gap:74.7vw;padding:2.92vh 35.56vw 2.92vh 2.77vw;background-color:#1e1e20}.parte-derecha-header{width:29.72vw;height:6.64vh;flex-grow:0;display:flex;flex-direction:row;justify-content:flex-end;align-items:center;padding:0}.usuario{width:4.66vw;height:3.64vh;flex-grow:0;margin-right:1.2vw;font-family:Inter;font-size:3vh;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:normal;text-align:center;color:#fff}.iconoSingOut,.iconoUser{font-size:2.5rem;color:#fff}.iconoUser{width:2.63vw;height:4.5vh;margin-right:1vw;flex-grow:0}.iconoSingOut{order:1;width:74px;height:31px;flex-grow:0;text-align:center}.logoUnal{left:1rem;flex-grow:0}img{height:9vh;max-width:auto}.colores,main{width:100vw;max-width:100vw;padding:0}main{max-height:83.39vh;flex-grow:0}footer{width:100vw}.colores{flex-direction:row;justify-content:center;align-items:flex-end}.color1{order:0;flex-grow:1;width:288.4px;height:5.6vh;background:#fd4674}.color2{order:1;flex-grow:1;width:288.4px;height:5.6vh;background:#fdaf81}.color3,.color4{flex-grow:1;width:288.4px;height:5.6vh}.color3{background:#3bbbfa;order:2}.color4{background:#6d51e4;order:3}.color5{width:288.4px;height:5.6vh;background:#b740ce;order:4;flex-grow:1}.listas{width:100vw;flex-direction:row;justify-content:center;padding:0;left:.2vw;top:4.16vh}.ingresoLista{position:absolute;width:2.24vw;height:9.7vh}.cuadradoLista{flex-grow:0;padding:2vh 37px 0 60px}.textoCantidadIngresoLista,.textoCategoriaIngreso,.textoIngreso{width:20.8vw;height:5.77vh;flex-grow:0;font-family:Inter;font-size:2.9vh;font-stretch:normal;font-style:normal;letter-spacing:normal;color:#000}.cuadradoIngreso{border:2px solid #72b162;background-color:#dff0c8}.cuadradoGasto{background:rgba(240,99,99,.47);border:2px solid rgba(240,99,99,.59)}.textoCategoriaIngreso,.textoIngreso{font-weight:600;line-height:normal;text-align:left;padding-right:5vw}.textoIngreso{font-weight:100}.textoCantidadIngresoLista{padding-right:6vw;font-weight:600;text-align:center}.iconoEditar,.iconoEliminar{width:2.5vw;height:5.07vh;flex-grow:0;font-size:1.3vw;color:#000}.boton{position:absolute;background:#000;padding:5px 10px;border-radius:4px;left:9.4vw;color:#fff;font-weight:bolder;margin-top:35px}
+{% endblock styles %}
+
 {% block body %}
-<h1>Ver todo</h1>
+<main>
 
-<h2>Todos los gastos</h2>
-<ul>
-    {% for expense in expenses %}
-        <p>{{expense}}, <a href="{% url 'budget:expense_update' expense.pk %}">Editar</a>, <a href="{% url 'budget:expense_delete' expense.pk %}">Borrar</a></p>
-    {% empty %}
-        <p>Oye no tienes ningun gasto, <a href="{% url 'budget:home' %}">crea uno!</a> </p>
-    {% endfor %}
-</ul>
+</div>
+<div class="container text-center mu-2">
+    <h1>Todos los ingresos y gastos</h1>
+</div>
+<div class="listas">
+    <div class="lista-de-ingresos">
+        <div class="IngresoLista">
+            {% for income in incomes %}
+            <div class="IngresoLista">
+                <div class="cuadradoLista cuadradoIngreso">
+                    <span class="textoIngreso">{{income}}</span>
+                    {% if income.category %}
+                    <span class="textoCategoriaIngreso">{{income.category}}</span>
+                    {% else %}
+                    <span class="textoCategoriaIngreso">---</span>
+                    {% endif %}
+                    <span class="textoCantidadIngresoLista">${{income.amount}}</span>
+                    <a href="{% url 'budget:income_update' income.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
+                    <a href="{% url 'budget:income_delete' income.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
+                </div>
+            </div>
+            {% empty %}
+            <div class="IngresoLista">
+                <div class="cuadradoLista cuadradoIngreso">
+                    <span class="textoIngreso">Oye no tienes ningun ingreso este mes, crea uno!</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="lista-de-ingresos">
+            <div class="IngresoLista">
+                {% for expense in expenses %}
+                <div class="IngresoLista">
+                    <div class="cuadradoLista cuadradoGasto">
+                        <span class="textoIngreso">{{expense}}</span>
+                        {% if expense.category %}
+                        <span class="textoCategoriaIngreso">{{expense.category}}</span>
+                        {% else %}
+                        <span class="textoCategoriaIngreso">---</span>
+                        {% endif %}
+                        <span class="textoCantidadIngresoLista">${{expense.amount}}</span>
+                        <a href="{% url 'budget:expense_update' expense.pk %}" class="fa-solid fa-screwdriver-wrench iconoEditar"></a>
+                        <a href="{% url 'budget:expense_delete' expense.pk %}" class="fa-regular fa-circle-xmark iconoEliminar"></a> 
+                    </div>
+                </div>
+                {% empty %}
+                <div class="IngresoLista">
+                    <div class="cuadradoLista cuadradoGasto">
+                        <span class="textoIngreso">Oye no tienes ningun gasto este mes, crea uno!</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+</div>
+</main>
 
-
-<h2>Todos los ingresos</h2>
-<ul>
-    {% for income in incomes %}
-        <p>{{income}}, <a href="{% url 'budget:income_update' income.pk %}">Editar</a>, <a href="{% url 'budget:income_delete' income.pk %}">Borrar</a></p>
-    {% empty %}
-        <p>Oye no tienes ningun ingreso, <a href="{% url 'budget:home' %}">crea uno!</a> </p>
-    {% endfor %}
-</ul>
 {% endblock body %}

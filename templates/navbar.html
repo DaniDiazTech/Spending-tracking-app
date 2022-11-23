@@ -1,0 +1,12 @@
+<header>
+    <div class="logoUnal">
+        <figure>
+            <a href="{% url 'budget:home' %}"><img src="https://images.credly.com/images/d57ca793-0499-419a-a5a8-8a56699c6c6c/blob.png" alt="Imagen universidad Nacional"> </a>
+        </figure>
+    </div>
+    <div class="parte-derecha-header">
+        <a href='#' class="fa-regular fa-user iconoUser"></a>
+        <a href='{% url 'accounts:logout' %}' class="fa-solid fa-right-from-bracket iconoSingOut"></a>
+        <span class="usuario">{{user.username | capfirst}}</span>
+    </div>
+</header>

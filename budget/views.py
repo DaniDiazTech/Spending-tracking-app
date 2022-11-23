@@ -40,6 +40,9 @@ class HomeView(LoginRequiredMixin, View):
 
         context['budget_amount'] = context['sum_incomes'] -  context['sum_expenses']
 
+        # only first four
+        context['incomes'] = context['incomes'][:4]
+        context['expenses'] = context['expenses'][:4]
         # Forms
         context['expense_form'] = ExpenseForm
         context['income_form'] = IncomeForm
